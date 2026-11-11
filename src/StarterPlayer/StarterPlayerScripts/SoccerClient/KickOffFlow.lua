@@ -240,8 +240,8 @@ local function refresh()
 			for _, slot in ipairs(slots.Slots) do
 				if slot.Role == "FIELD" then
 					chip(posRow, slot.Label, u, function()
-						Remotes.get("SetRole"):FireServer("FIELD")
-						Remotes.get("AssignPosition") -- placeholder, replaced below
+						Remotes.get("AssignPosition"):FireServer(slot.Id)
+						SoundController.Click()
 					end, myPos == slot.Id, false)
 				end
 			end
