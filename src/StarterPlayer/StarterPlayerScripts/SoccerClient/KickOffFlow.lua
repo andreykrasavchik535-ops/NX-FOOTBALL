@@ -378,4 +378,8 @@ function KickOffFlow.Hide()
 	if root then root.Visible = false end
 end
 
+function KickOffFlow.IsVisible()
+	return visible
+end
+
 return KickOffFlow
