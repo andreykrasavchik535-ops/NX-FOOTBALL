@@ -79,7 +79,12 @@ function MainMenu.Build(parent, callbacks)
 	onSettings = callbacks.Settings
 	MainMenu.Toast = callbacks.Toast
 
-	root = UIKit.frame(gui, { Name = "MainMenu", Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, Visible = false })
+	root = Instance.new("CanvasGroup")
+	root.Name = "MainMenu"
+	root.Size = UDim2.fromScale(1, 1)
+	root.BackgroundTransparency = 1
+	root.Visible = false
+	root.Parent = gui
 	local u = UIKit.unit()
 
 	-- subtle dark gradient backdrop so text reads over the stadium
@@ -177,9 +182,6 @@ function MainMenu.Show()
 	visible = true
 	root.Visible = true
 	root.GroupTransparency = 1
-	pcall(function()
-		root.GroupTransparency = 1
-	end)
 	tween(root, { GroupTransparency = 0 }, 0.3)
 	refreshSelection()
 end
