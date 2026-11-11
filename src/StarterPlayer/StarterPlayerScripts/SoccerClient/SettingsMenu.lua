@@ -201,4 +201,8 @@ function SettingsMenu.Hide()
 	if root then root.Visible = false end
 end
 
+function SettingsMenu.IsVisible()
+	return visible
+end
+
 return SettingsMenu
