@@ -225,6 +225,7 @@ function TeamService.AssignPosition(player, slotId)
 		end
 	end
 	positionOf[player] = slotId
+	roleOf[player] = "FIELD"
 	applyAttributes(player)
 	changed:Fire(player, name)
 	return true, slotId
@@ -381,6 +382,14 @@ function TeamService.Init()
 		end
 		local ok, msg = TeamService.SetRole(player, role)
 		Remotes.get("Notify"):FireClient(player, ok and "good" or "bad", ok and ("Role: " .. role) or msg)
+	end)
+	Remotes.get("AssignPosition").OnServerEvent:Connect(function(player, slotId)
+		local b = buckets[player]
+		if not b or not b:take() or type(slotId) ~= "string" then
+			return
+		end
+		local ok, msg = TeamService.AssignPosition(player, slotId)
+		Remotes.get("Notify"):FireClient(player, ok and "good" or "bad", ok and ("Position: " .. msg) or msg)
 	end)
 end
 
