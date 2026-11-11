@@ -8,7 +8,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local NAMES = {
 	-- client -> server (intents only, never results)
-	"ActionStart", "ActionRelease", "Tackle", "Feint", "Sprint", "JoinTeam", "SetRole", "GKDive", "MatchControl", "SettingsSync",
+	"ActionStart", "ActionRelease", "Tackle", "Feint", "Sprint", "JoinTeam", "SetRole", "AssignPosition", "GKDive", "MatchControl", "SettingsSync",
 	-- server -> client
 	"ActionResult", "FeintApproved", "TackleApproved", "DiveApproved", "Notify", "GoalScored", "MatchEnded", "ComboHit",
 	"KickPlayed",   -- (userId, action, chargeFraction)   a shot / pass / long ball was struck
