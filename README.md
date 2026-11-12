@@ -1,24 +1,24 @@
 # NX26: Next Football
 
-Полноценная футбольная игра Roblox на базе существующего проекта со стадионом Tottenham.
+**Latest: `NX26_Next_Football_v3.rbxl`** — menu redesign + audit fixes. Open this file in Roblox Studio.
 
-## Файлы
-- NX26_Next_Football_v2.rbxl — итоговый Place (стадион сохранён побайтово). ОТКРЫВАЙ ЕГО.
-- NX26_Next_Football_Updated.rbxl — исходный файл (не изменён).
-- src/ — исходники скриптов с точной структурой Explorer; src/original/ — оригинальные 24 скрипта.
-- docs/AUDIT.md, docs/PLAN.md, docs/REPORT.md — аудит, план, отчёт.
-- NX26_sources.zip — архив исходников + отчёт.
+## Versions
+- `NX26_Next_Football_v3.rbxl` — CURRENT (redesigned main menu, ClientMain hang fixed, server-authoritative sounds).
+- `NX26_Next_Football_v2_2.rbxl` — previous (adds set pieces).
+- `NX26_Next_Football_v2.rbxl`, `NX26_Next_Football_Updated.rbxl` — older.
 
-## Быстрый старт
-1. Открой NX26_Next_Football_v2.rbxl в Roblox Studio. 2. Play -> меню -> KICK OFF -> сторона/позиция -> START MATCH.
-3. Управление: F/LMB удар, E пас, R длинный, Q/X подкаты, Shift спринт, 1-0/Ctrl/Alt финты, Z/C вратарь.
+## v3 changes
+- Fixed ClientMain infinite WaitForChild (Remotes) that prevented the client from starting.
+- SoundRunner now triggers world sounds from authoritative server hooks only (no client-spoofable events).
+- SoundIds.Resolve + NXSounds folder support; SoundController per-player volumes.
+- Main menu fully redesigned (original PES-Master-League-inspired): navy panels, featured KICK OFF card,
+  COMING SOON locks, matchday rail, adaptive hints, PC/touch/gamepad, responsive.
+- Preserved: stadium (357 MeshPart / 349 SurfaceAppearance byte-identical), 28 feints + 8 combos,
+  set pieces, AI-only goalkeepers, server authority.
 
-## Важно
-- Стадион Tottenham (357 MeshPart, 349 SurfaceAppearance) сохранён без изменений.
-- ИИ — только вратари; полевые позиции занимают реальные игроки.
-- Анимации/звуки/формы: слоты пустые и безопасные, вставь свои ID.
-- Перед публикацией: Config.TEST_MODE = false. Подробности: docs/REPORT.md.
+## Docs
+- `docs/REPORT_v3.md` — full audit & redesign report.
+- `NX26_v3_sources.zip` — all v3 scripts (Explorer paths) + report.
 
-## Статус проверки
-Все 38 скриптов прошли статическую проверку синтаксиса; структура .rbxl проверена повторным парсингом.
-В Roblox Studio рантайм НЕ тестировался — проверь по инструкции в REPORT.md.
+## Note
+Static checks only (structure re-parse + Lua syntax). Not run in Roblox Studio here; verify on first Play.
