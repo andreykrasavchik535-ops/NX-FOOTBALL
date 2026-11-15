@@ -1,7 +1,6 @@
 # NX26 AnimationId Configuration Table
 
-Slots in ReplicatedStorage/SoccerShared/AnimationIds. Empty = procedural fallback (see below) or default Roblox animation.
-Fill with your published id to override. `_Left` = mirrored variant.
+Slots in ReplicatedStorage/SoccerShared/AnimationIds. Empty = procedural fallback or default Roblox animation. Your Blender ids override.
 
 ## Movement (17 slots)
 - Locomotion.RunNoBall
@@ -118,5 +117,5 @@ Fill with your published id to override. `_Left` = mirrored variant.
 - Feints.AdvancedBodyFeint
 - Feints.AdvancedBodyFeint_Left
 
-## Procedural fallback (NEW)
-ProceduralAnimations generates real R15 KeyframeSequence animations at runtime for: Idle, RunNoBall, RunBall, Sprint, Shoot, Pass, Long, TackleFast, TackleSlide. Used ONLY when a slot is empty; your Blender ids always override. Procedural quality is moderate; replace with Blender for production.
+## Procedural fallback v2
+ProceduralAnimations now generates real R15 animations for locomotion (Idle/Run/Sprint), core actions (Shoot/Pass/Long/Tackle/Slide) AND all 28 skill moves (side-aware left/right). Used only when a slot is empty. Procedural quality; replace with Blender for production.
