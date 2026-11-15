@@ -1,0 +1,121 @@
+# NX26 AnimationId Configuration Table
+
+Slots in ReplicatedStorage/SoccerShared/AnimationIds. Empty = procedural fallback or default Roblox animation. Your Blender ids override.
+
+## Movement (17 slots)
+- Locomotion.RunNoBall
+- Locomotion.RunBall
+- Locomotion.IdleBall
+- Locomotion.Idle
+- Locomotion.Walk
+- Locomotion.Jog
+- Locomotion.Sprint
+- Locomotion.Acceleration
+- Locomotion.Deceleration
+- Locomotion.Start
+- Locomotion.Stop
+- Locomotion.TurnLeft
+- Locomotion.TurnRight
+- Locomotion.Backpedal
+- Locomotion.ShuffleLeft
+- Locomotion.ShuffleRight
+- Locomotion.Recovery
+
+## Actions (44 slots)
+- Actions.Shoot
+- Actions.Pass
+- Actions.Long
+- Actions.ShotFinesse
+- Actions.ShotTrivela
+- Actions.ShotKnuckle
+- Actions.Header
+- Actions.PassThrough
+- Actions.PassLob
+- Actions.TackleFast
+- Actions.TackleSlide
+- Actions.GKDive
+- Actions.GKDiveLeft
+- Actions.GKDiveRight
+- Actions.GKCatch
+- Actions.GKSave
+- Actions.GKParry
+- Actions.GKPunt
+- Actions.Dribble
+- Actions.CloseControl
+- Actions.DribbleLeft
+- Actions.DribbleRight
+- Actions.FirstTouch
+- Actions.Trap
+- Actions.Shield
+- Actions.Receive
+- Actions.ShortShot
+- Actions.PowerShot
+- Actions.FinesseShot
+- Actions.Volley
+- Actions.WeakFootShot
+- Actions.GroundPass
+- Actions.Cross
+- Actions.StandingTackle
+- Actions.Interception
+- Actions.Jockey
+- Actions.Block
+- Actions.DefensiveRecovery
+- Actions.GKReady
+- Actions.GKLowSave
+- Actions.GKHighSave
+- Actions.GKPunch
+- Actions.GKDistribution
+- Actions.GKGoalKick
+
+## Skill moves (28) (48 slots)
+- Feints.StepOver
+- Feints.StepOver_Left
+- Feints.DoubleStepOver
+- Feints.DoubleStepOver_Left
+- Feints.Roulette
+- Feints.Roulette_Left
+- Feints.RainbowFlick
+- Feints.HeelFlick
+- Feints.Elastico
+- Feints.Elastico_Left
+- Feints.ReverseElastico
+- Feints.ReverseElastico_Left
+- Feints.BodyFeint
+- Feints.BallRoll
+- Feints.BallRoll_Left
+- Feints.FakeShot
+- Feints.Nutmeg
+- Feints.DragBack
+- Feints.DragBack_Left
+- Feints.LaCroqueta
+- Feints.LaCroqueta_Left
+- Feints.McGeadySpin
+- Feints.McGeadySpin_Left
+- Feints.HeelToHeel
+- Feints.HeelToHeel_Left
+- Feints.BodyFeintCut
+- Feints.BodyFeintCut_Left
+- Feints.TwoTouchQuick
+- Feints.Chop
+- Feints.Chop_Left
+- Feints.RouletteBurst
+- Feints.RouletteBurst_Left
+- Feints.DoubleTouch
+- Feints.DoubleTouch_Left
+- Feints.StepoverExit
+- Feints.StepoverExit_Left
+- Feints.LateralHeelToHeel
+- Feints.LateralHeelToHeel_Left
+- Feints.SombreroFlick
+- Feints.StopAndGo
+- Feints.ScoopTurn
+- Feints.ScoopTurn_Left
+- Feints.VCut
+- Feints.VCut_Left
+- Feints.BerbaSpin
+- Feints.BerbaSpin_Left
+- Feints.AdvancedBodyFeint
+- Feints.AdvancedBodyFeint_Left
+
+## Procedural fallback v2
+ProceduralAnimations now generates real R15 animations for locomotion (Idle/Run/Sprint), core actions (Shoot/Pass/Long/Tackle/Slide) AND all 28 skill moves (side-aware left/right). Used only when a slot is empty. Procedural quality; replace with Blender for production.
