@@ -22,6 +22,8 @@ det=+1, timestamps exact (t0=0, tlast=duration).
 1. Blender -> Edit -> Preferences -> Add-ons -> Install -> pick NX26_Blender_Importer.py -> enable.
 2. File -> Import -> NX26 Animation JSON -> pick a file (start with example_RunNoBall.json).
 3. It builds an NX26_R15 armature and an Action; press Play to preview; edit keyframes freely.
+   BATCH: use File > Import > 'NX26 Folder - ALL animations' and pick the anim_json folder -> all 65 load
+   at once as separate Actions on one armature (no need to import one by one). Switch Actions in the Action dropdown.
 4. Export FBX (File -> Export -> FBX) for re-import to Roblox.
 
 ## Export from Roblox Studio (ground truth)
