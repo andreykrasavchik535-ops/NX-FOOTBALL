@@ -7,7 +7,7 @@ bl_info = {
     "description": "Import NX26 procedural Roblox animation JSON as Blender Actions on an R15 armature",
     "category": "Import-Export",
 }
-import bpy, json, math
+import bpy, json, math, os, glob
 from mathutils import Matrix, Vector, Quaternion
 # Roblox (X right, Y up, Z back) -> Blender (X right, Y forward, Z up): (x,y,z)->(x,z,-y)
 B = Matrix(((1,0,0),(0,0,1),(0,-1,0)))
@@ -79,6 +79,15 @@ def import_json(filepath, armature_name="NX26_R15"):
     if data.get("loop"):
         for fc in act.fcurves: fc.modifiers.new('CYCLES')
     return act
+def import_folder(folder, armature_name="NX26_R15"):
+    files = sorted(glob.glob(os.path.join(folder, "*.json")))
+    build_armature(armature_name)
+    names = []
+    for fp in files:
+        act = import_json(fp, armature_name)
+        act.use_fake_user = True   # keep every Action saved, not purged
+        names.append(act.name)
+    return names
 class IMPORT_OT_nx26(bpy.types.Operator):
     bl_idname = "import_anim.nx26_json"
     bl_label = "Import NX26 Animation JSON"
@@ -90,13 +99,27 @@ class IMPORT_OT_nx26(bpy.types.Operator):
     def invoke(self, context, event):
         context.window_manager.fileselect_add(self)
         return {'RUNNING_MODAL'}
+class IMPORT_OT_nx26_batch(bpy.types.Operator):
+    bl_idname = "import_anim.nx26_folder"
+    bl_label = "Import NX26 Folder (all JSON at once)"
+    directory: bpy.props.StringProperty(subtype='DIR_PATH')
+    def execute(self, context):
+        names = import_folder(self.directory)
+        self.report({'INFO'}, "Imported %d NX26 animations as Actions" % len(names))
+        return {'FINISHED'}
+    def invoke(self, context, event):
+        context.window_manager.fileselect_add(self)
+        return {'RUNNING_MODAL'}
 def menu_fn(self, context):
     self.layout.operator(IMPORT_OT_nx26.bl_idname, text="NX26 Animation JSON (.json)")
+    self.layout.operator(IMPORT_OT_nx26_batch.bl_idname, text="NX26 Folder - ALL animations (.json)")
 def register():
     bpy.utils.register_class(IMPORT_OT_nx26)
+    bpy.utils.register_class(IMPORT_OT_nx26_batch)
     bpy.types.TOPBAR_MT_file_import.append(menu_fn)
 def unregister():
     bpy.types.TOPBAR_MT_file_import.remove(menu_fn)
+    bpy.utils.unregister_class(IMPORT_OT_nx26_batch)
     bpy.utils.unregister_class(IMPORT_OT_nx26)
 if __name__ == "__main__":
     register()
